@@ -1,5 +1,5 @@
 import React from 'react';
-import { Experience } from '../data/resume.ts';
+import { Experience } from '../data/resume';
 
 const ExperienceCard: React.FC<{ exp: Experience }> = ({ exp }) => (
     <div style={{ borderBottom: '1px solid #ccc', padding: '20px 0' }}>

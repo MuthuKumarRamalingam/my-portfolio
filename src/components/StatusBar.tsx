@@ -1,4 +1,3 @@
-// src/components/StatusBar.tsx
 import React from "react";
 import { statusBarItems } from "../data/portfolio";
 

@@ -1,5 +1,3 @@
-// src/components/Portfolio.tsx
-// Top-level page — drop this into App.tsx as <Portfolio />
 import React from "react";
 import "../styles/portfolio.css";
 import StatusBar from "./StatusBar";
