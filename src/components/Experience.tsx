@@ -1,4 +1,3 @@
-// src/components/Experience.tsx
 import React from "react";
 import { experience } from "../data/portfolio";
 

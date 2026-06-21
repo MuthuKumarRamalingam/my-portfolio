@@ -1,7 +1,3 @@
-// src/data/portfolio.ts
-// Single source of truth for all portfolio content.
-// Update this file when your resume changes — components just render it.
-
 export interface Metric {
   value: string;
   label: string;
