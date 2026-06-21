@@ -37,7 +37,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/muthukumarramalingam/",
   github: "https://github.com/MuthuKumarRamalingam",
   location: "Chennai, IN",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "https://drive.google.com/file/d/1SomI9eUxID7QeWq5JePsn31mwLD3ju8e/view?usp=sharing",
 };
 
 export const statusBarItems = [
