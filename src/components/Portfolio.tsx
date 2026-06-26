@@ -19,6 +19,7 @@ declare global {
 const Portfolio: React.FC = () => {
   // Effect Hook to handle initial page view metrics tracking
   useEffect(() => {
+    // Executes cleanly once the deferred tracking script finishes initial background parsing
     if (typeof window.gtag === "function") {
       window.gtag("config", "G-4FWBGFJP5J", {
         page_path: window.location.pathname + window.location.search
