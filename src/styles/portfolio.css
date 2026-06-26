@@ -111,6 +111,22 @@
   padding: 88px 0 64px;
   border-top: none;
 }
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.hero-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+}
 .hero-eyebrow {
   font-family: var(--mono);
   font-size: 13px;
