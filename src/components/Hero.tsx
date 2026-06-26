@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
     <section className="hero">
       <div className="hero-top">
         <img
-          src="/profile.jpg"
+          src={`${process.env.PUBLIC_URL}/profile.jpg`}
           alt={profile.name}
           className="hero-photo"
         />
