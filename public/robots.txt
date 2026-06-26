@@ -1,17 +1,19 @@
-# Allow all bots to crawl the site
+# ========================================================================
+# ROBOTS.TXT FOR MUTHUKUMAR RAMALINGAM PORTFOLIO
+# ========================================================================
+
+# GLOBAL RULES FOR ALL SEARCH BOTS (Google, Bing, Yahoo, DuckDuckGo, etc.)
+# ------------------------------------------------------------------------
 User-agent: *
 Allow: /
 
-# Specifically allow Google, Bing, and other major search engines
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-# Disallow any admin or private paths (if you have any)
+# SECURITY & CRAWL BUDGET OPTIMIZATION
+# ------------------------------------------------------------------------
+# Blocks crawlers from wasting time indexing development, testing, or admin stubs.
 Disallow: /admin/
 Disallow: /private/
 
-# Sitemap location
+# XML SITEMAP LOCATION
+# ------------------------------------------------------------------------
+# Explicitly guides bots to your sitemap layout to accelerate page deep-linking.
 Sitemap: https://muthukumarramalingam.github.io/my-portfolio/sitemap.xml
