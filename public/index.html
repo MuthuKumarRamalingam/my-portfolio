@@ -15,7 +15,27 @@
     
     <!-- 
       ========================================================================
-      2. CORE APP SHELL ASSETS & PROGRESSIVE WEB APP (PWA) REQUIREMENTS
+      2. LIGHTHOUSE PERFORMANCE CRITICAL OPTIMIZATIONS (FIXES ENGINE BLOCKING)
+      ========================================================================
+      - Preconnect establishes handshake connections early to foreign asset servers.
+        This cuts out dns-lookup and tcp-connect latency steps ahead of time.
+      - Non-blocking styles loading via media swapping ("print" -> "all"):
+        This ensures external assets don't block the critical rendering path.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Asynchronous Font Loading Pattern (Prevents the bottleneck in image_27cb02.png) -->
+    <link 
+      rel="stylesheet" 
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" 
+      media="print" 
+      onload="this.media='all'" 
+    />
+    
+    <!-- 
+      ========================================================================
+      3. CORE APP SHELL ASSETS & PROGRESSIVE WEB APP (PWA) REQUIREMENTS
       ========================================================================
       - link rel="icon": The shortcut icon displayed inside web browser tabs.
       - link rel="apple-touch-icon": The icon used by iOS/Safari devices if a user bookmarks the site.
@@ -28,7 +48,7 @@
     
     <!-- 
       ========================================================================
-      3. GLOBAL SEARCH ENGINE OPTIMIZATION (SEO) META TAGS
+      4. GLOBAL SEARCH ENGINE OPTIMIZATION (SEO) META TAGS
       ========================================================================
       - description: The exact snippet text that appears directly under your link in Google search results.
       - robots: Directs search engines to crawl ("index") this page and follow links ("follow") on it.
@@ -43,7 +63,7 @@
     
     <!-- 
       ========================================================================
-      4. OPEN GRAPH (OG) METADATA
+      5. OPEN GRAPH (OG) METADATA
       ========================================================================
       - WHAT IS IT? Open Graph is a protocol created by Facebook that has become the internet 
         standard for social platforms (LinkedIn, Facebook, WhatsApp, Discord).
@@ -62,7 +82,7 @@
     
     <!-- 
       ========================================================================
-      5. TWITTER CARD METADATA
+      6. TWITTER CARD METADATA
       ========================================================================
       - WHAT IS IT? This is a proprietary metadata schema used exclusively by X (formerly Twitter).
       - WHY IS IT REQUIRED? While X can read Open Graph tags as a fallback, explicit Twitter Card tags 
@@ -77,7 +97,7 @@
     
     <!-- 
       ========================================================================
-      6. GOOGLE SITE VERIFICATION
+      7. GOOGLE SITE VERIFICATION
       ========================================================================
       - WHAT IS IT? A unique cryptographic security token linked to your Google account.
       - WHY IS IT REQUIRED? It proves to Google that you are the verified owner of this domain.
@@ -91,7 +111,7 @@
     
     <!-- 
       ========================================================================
-      7. JSON-LD STRUCTURED DATA RICH SNIPPETS
+      8. JSON-LD STRUCTURED DATA RICH SNIPPETS
       ========================================================================
       - WHAT IS IT? JSON-LD (JavaScript Object Notation for Linked Data) is a machine-readable 
         data format recommended by Google and the W3C.
