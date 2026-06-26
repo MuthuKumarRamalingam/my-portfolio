@@ -1,3 +1,17 @@
-# https://www.robotstxt.org/robotstxt.html
+# Allow all bots to crawl the site
 User-agent: *
-Disallow:
+Allow: /
+
+# Specifically allow Google, Bing, and other major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Disallow any admin or private paths (if you have any)
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap location
+Sitemap: https://muthukumarramalingam.github.io/my-portfolio/sitemap.xml
