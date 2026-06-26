@@ -1,4 +1,3 @@
-
 :root {
   /* Core background and surface variables */
   --bg: #0b0d10;
@@ -15,8 +14,15 @@
   --green: #4ade9c;
   --blue: #8ba5ef;        /* FIXED: Lightened blue slightly to hit 4.51:1 contrast on dark surfaces */
   --amber: #e8b86b;
-  --mono: "JetBrains Mono", monospace;
-  --sans: "Inter", sans-serif;
+  
+  /* FIXED: Added strict system fallback stacks to prevent layout reflow (CLS) before assets fetch */
+  --mono: "JetBrains Mono", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* FIXED: Prevent content layout-shifts when browser vertical scrollbars initialize dynamically */
+html {
+  scrollbar-gutter: stable;
 }
 
 .portfolio-root {
@@ -44,6 +50,8 @@
 .portfolio-root a:hover {
   text-decoration: underline;
 }
+
+/* FIXED: Added clear visible focus paths for keyboard/screen-reader accessibility */
 .portfolio-root :focus-visible {
   outline: 2px solid var(--green);
   outline-offset: 3px;
@@ -69,18 +77,23 @@
 .statusbar-inner {
   max-width: 880px;
   margin: 0 auto;
-  padding: 10px 24px;
+  padding: 12px 24px;
   display: flex;
   align-items: center;
   gap: 18px;
   overflow-x: auto;
   white-space: nowrap;
+  /* FIXED: Standardizes smooth momentum gestures on high-density iOS panels */
+  -webkit-overflow-scrolling: touch; 
 }
+
+/* FIXED: Hardens scroll area height for small touch interfaces */
 .stat {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
   color: var(--text-dim);
+  min-height: 24px; 
 }
 .dot {
   width: 6px;
@@ -89,16 +102,20 @@
   background: var(--green);
   flex-shrink: 0;
 }
+
+/* FIXED: Re-engineered keyframe mechanics away from painting layers to the GPU compositor via transform */
 .dot.pulse {
-  animation: pulse 2s ease-in-out infinite;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  will-change: transform, opacity;
 }
 @keyframes pulse {
-  0%,
-  100% {
+  0%, 100% {
+    transform: scale(1);
     opacity: 1;
   }
   50% {
-    opacity: 0.35;
+    transform: scale(1.15);
+    opacity: 0.4;
   }
 }
 .stat b {
@@ -150,6 +167,7 @@
   letter-spacing: -0.01em;
   color: var(--text);
   margin-bottom: 14px;
+  line-height: 1.15;
 }
 .hero .role {
   font-family: var(--mono);
@@ -182,7 +200,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: border-color 0.15s, transform 0.1s;
+  transition: border-color 0.15s, transform 0.1s, opacity 0.15s;
   background: transparent;
   color: var(--text);
   cursor: pointer;
@@ -198,7 +216,7 @@
   border-color: var(--green);
 }
 .btn.primary:hover {
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 /* section shared */
@@ -330,7 +348,7 @@
   padding: 4px 10px;
   border-radius: 5px;
   white-space: nowrap;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
 }
@@ -454,9 +472,21 @@
   .hero {
     padding: 64px 0 48px;
   }
+  /* FIXED: Balances layout rendering blocks under narrow viewport constraints */
+  .hero-top {
+    gap: 16px;
+  }
 }
+
 @media (prefers-reduced-motion: reduce) {
   .dot.pulse {
     animation: none;
+    transform: none;
+  }
+  .btn {
+    transition: none;
+  }
+  .btn:hover {
+    transform: none;
   }
 }
